@@ -23,17 +23,28 @@ public class JavaQuiz {
         wordsArr.add("i am a cat");
         wordsArr.add("abracatamba"); 
  
-        Scanner scanner = new Scanner(System.in);
+                  Scanner scanner = new Scanner(System.in);
         while(scanner.hasNext()){
             String s = scanner.nextLine(); 
-            for(String wordString: wordsArr){  
-                if(wordString.contains(s)){
-                    System.out.println(wordString);
-                    } 
-            } 
-        
+            
+            List<String> results = findWordList(wordsArr, s);
+            
+            results.forEach(result->{
+               System.out.println(result);
+            });
         }
+       
         
+    }
+    
+    public static List<String> findWordList(List<String> wordsArr, String searchKeyword){
+        List<String> listToReturn = new ArrayList<>();
+                 for(String wordString: wordsArr){  
+                if(wordString.contains(searchKeyword)){ 
+                    listToReturn.add(wordString);
+                } 
+            }  
+        return listToReturn;
     }
     
 }
